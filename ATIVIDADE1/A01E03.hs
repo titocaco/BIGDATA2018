@@ -7,5 +7,5 @@ mult5 x = x `mod` 5 == 0
 
 -- | Main function
 main = do
-    print (mult5 5)
-    print (mult5 7)
+    print $ mult5 5
+    print $ mult5 7
