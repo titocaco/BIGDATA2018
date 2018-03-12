@@ -1,15 +1,12 @@
 -- | Main module
 module Main where
 
--- | Package imports
-import Data.Char
+digitos :: Int -> [Int]
+digitos d = [read [x] | x <- show d]
 
--- | string2list function
-string2list s = map digitToInt s
-
--- | sumDigits function
-sumDigits sd = sum $ string2list sd
+somaDigitos :: Int -> Int
+somaDigitos = sum . digitos
 
 -- | Main function
 main = do
-    print $ sumDigits "01234"
+    print $ somaDigitos 477
