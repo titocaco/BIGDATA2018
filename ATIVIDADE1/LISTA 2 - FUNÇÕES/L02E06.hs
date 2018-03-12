@@ -19,8 +19,4 @@ perAditiva p
 
 -- | Main function
 main = do
-    print 477
-    print $ digitos 477
-    print $ somaDigitos 477
-    print $ listaSomas 477
-    print $ perAditiva 477
+    print $ perAditiva 5473
