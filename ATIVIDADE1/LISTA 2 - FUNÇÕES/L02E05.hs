@@ -7,7 +7,7 @@ digitos d = [read [x] | x <- show d]
 
 -- | somaDigitos function
 somaDigitos :: Int -> Int
-somaDigitos = sum . digitos
+somaDigitos s = sum $ digitos s
 
 -- | Main function
 main = do
