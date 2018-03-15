@@ -1,3 +1,6 @@
+-- | Main module
+module Main where
+
 -- | Basic functions
 {-
     All the following functions do basic operations using matrices.
