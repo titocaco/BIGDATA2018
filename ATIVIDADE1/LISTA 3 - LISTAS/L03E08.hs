@@ -15,7 +15,7 @@ collatzLen n = length $ collatzList n
                         | otherwise = 3 * x + 1
 
 -- | maiorCollatz function
-maiorCollatz = maxCollatz [(x, collatzLen x) | x <- [1..100000]]
+maiorCollatz = maxCollatz [(x, collatzLen x) | x <- [1..1000000]]
     where
         maxCollatz :: Ord a => [(t, a)] -> (t, a)
         maxCollatz []     = error "maximum of empty list"
