@@ -14,6 +14,7 @@ module Main where
         to n. And the number of lines is also equal to n, because it is a square
         matrix.
     -}
+    identidade :: Int -> [[Int]]
     identidade n = [ [fromEnum $ i == j | i <- [1..n]] | j <- [1..n]]
 
     -- | Main function

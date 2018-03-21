@@ -41,9 +41,11 @@ module Main where
     mostraMat :: [[Int]] -> String
     mostraMat = unlines . map (unwords . map show)
 
+    identidade :: Int -> [[Int]]
     identidade n = [ [fromEnum $ i == j | i <- [1..n]] | j <- [1..n]]
 
     -- | somaSec function
+    somaSec :: [[Double]] -> Double
     somaSec mtx = sum [(mtx !! i) !! (n-i) | i <- [0..n]]
         where
             n = (fst $ tamanhoMtx mtx) - 1

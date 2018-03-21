@@ -2,6 +2,7 @@
 module Main where
 
     -- | fibonacci function
+    fibonacci :: Int -> Int -> [Int]
     fibonacci x y = x:fibonacci y (x + y)
 
     -- | Main function

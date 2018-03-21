@@ -5,6 +5,7 @@ module Main where
     import Data.Char
 
     -- | string2list function
+    string2list :: String -> [Int]
     string2list s = map digitToInt s
 
     -- | Main function

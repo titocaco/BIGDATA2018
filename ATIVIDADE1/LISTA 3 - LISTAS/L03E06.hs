@@ -2,7 +2,7 @@
 module Main where
 
     -- | collatz function
-    collatz :: Integer -> Integer
+    collatz :: Int -> Int
     collatz x
         | x `mod` 2 == 0 = x `div` 2
         | otherwise = 3 * x + 1

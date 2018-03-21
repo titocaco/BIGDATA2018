@@ -38,12 +38,14 @@ module Main where
                 k2 = fst $ tamanhoMtx m2
 
     -- | mostraMat function, used to print the matrix in a friendly way
-    mostraMat :: [[Int]] -> String
+    mostraMat :: [[Double]] -> String
     mostraMat = unlines . map (unwords . map show)
 
+    identidade :: Int -> [[Int]]
     identidade n = [ [fromEnum $ i == j | i <- [1..n]] | j <- [1..n]]
 
     -- | somaPrincipal function
+    somaPrincipal :: [[Double]] -> Double
     somaPrincipal mtx = sum [(mtx !! i) !! i | i <- [0..n]]
         where
             n = (fst $ tamanhoMtx mtx) - 1

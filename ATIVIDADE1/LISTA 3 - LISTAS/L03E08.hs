@@ -2,6 +2,7 @@
 module Main where
 
     -- | collatzLen function
+    collatzLen :: Int -> Int
     collatzLen n = length $ collatzList n
         where
             collatzList n
@@ -9,7 +10,7 @@ module Main where
                 | n == 1 = [n]
                 | otherwise = n:collatzList (collatz n)
                 
-            collatz :: Integer -> Integer
+            collatz :: Int -> Int
             collatz x
                 | x `mod` 2 == 0 = x `div` 2
                 | otherwise = 3 * x + 1
