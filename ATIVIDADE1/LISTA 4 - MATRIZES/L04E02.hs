@@ -1,33 +1,36 @@
 -- | Main module
 module Main where
 
+    type Vector a = [a]
+    type Matrix a = [[a]]
+
     -- | Basic functions
     {-
         All the following functions do basic operations using matrices.
     -}
-    tamanhoMtx :: [[a]] -> (Int, Int)
+    tamanhoMtx :: Matrix a -> (Int, Int)
     tamanhoMtx mtx = (m, n)
         where
             m = length mtx
             n = length $ head mtx
 
-    somaMtx :: Num a => [[a]] -> [[a]] -> [[a]]
+    somaMtx :: Num a => Matrix a -> Matrix a -> Matrix a
     somaMtx = zipWith (zipWith (+))
 
-    subMtx :: Num a => [[a]] -> [[a]] -> [[a]]
+    subMtx :: Num a => Matrix a -> Matrix a -> Matrix a
     subMtx = zipWith (zipWith (-))
 
-    somaConstMtx :: Num a => a -> [[a]] -> [[a]]
+    somaConstMtx :: Num a => a -> Matrix a -> Matrix a
     somaConstMtx x = map (map (+x))
 
-    multConstMtx :: Num a => a -> [[a]] -> [[a]]
+    multConstMtx :: Num a => a -> Matrix a -> Matrix a
     multConstMtx x = map (map (* x))
 
-    transpostaMtx :: [[a]] -> [[a]]
+    transpostaMtx :: Matrix a -> Matrix a
     transpostaMtx ([]:_) = []
     transpostaMtx m = (map head m) : transpostaMtx (map tail m)
 
-    multMtx :: Num a => [[a]] -> [[a]] -> [[a]]
+    multMtx :: Num a => Matrix a -> Matrix a -> Matrix a
     multMtx m1 m2
         | k1 /= k2 = error "Matrizes incompatíveis!"
         | otherwise = [ [prodInterno ri rj | rj <- m2'] | ri <- m1 ]
@@ -38,14 +41,14 @@ module Main where
                 k2 = fst $ tamanhoMtx m2
 
     -- | mostraMat function, used to print the matrix in a friendly way
-    mostraMat :: [[Double]] -> String
+    mostraMat :: Matrix Double -> String
     mostraMat = unlines . map (unwords . map show)
 
-    identidade :: Int -> [[Int]]
+    identidade :: Int -> Matrix Int
     identidade n = [ [fromEnum $ i == j | i <- [1..n]] | j <- [1..n]]
 
     -- | somaPrincipal function
-    somaPrincipal :: [[Double]] -> Double
+    somaPrincipal :: Matrix Double -> Double
     somaPrincipal mtx = sum [(mtx !! i) !! i | i <- [0..n]]
         where
             n = (fst $ tamanhoMtx mtx) - 1

@@ -1,8 +1,11 @@
 -- | Main module
 module Main where
 
+    type Vector a = [a]
+    type Matrix a = [[a]]
+
     -- | mostraMat function, used to print the matrix in a friendly way
-    mostraMat :: [[Int]] -> String
+    mostraMat :: Matrix Int -> String
     mostraMat = unlines . map (unwords . map show)
 
     -- | identidade function
@@ -14,18 +17,11 @@ module Main where
         to n. And the number of lines is also equal to n, because it is a square
         matrix.
     -}
-    identidade :: Int -> [[Int]]
+    identidade :: Int -> Matrix Int
     identidade n = [ [fromEnum $ i == j | i <- [1..n]] | j <- [1..n]]
 
     -- | Main function
     main = do
-        -- print $ tamanhoMtx [[1, 2], [3, 4]]
-        -- print $ somaMtx [[1, 2], [3, 4]] [[3, 3], [1, 1]]
-        -- print $ subMtx [[1, 2], [3, 4]] [[3, 3], [1, 1]]
-        -- print $ somaConstMtx 2 [[1, 2], [3, 4]]
-        -- print $ multConstMtx 2 [[1, 2], [3, 4]]
-        -- print $ transpostaMtx [[1, 2], [3, 4]]
-        -- print $ multMtx [[1, 2], [3, 4]] [[3, 3], [1, 1]]
         -- print $ identidade 3
         -- putStr $ mostraMat [[1, 2], [3, 4]]
         putStr $ mostraMat $ identidade 5
