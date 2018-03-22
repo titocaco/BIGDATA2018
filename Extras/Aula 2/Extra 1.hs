@@ -1,5 +1,5 @@
 {-
-    Aula:       3
+    Aula:       2
     Exercício:  1
     Enunciado:  Crie uma função que receba 3 valores do tipo Double: a, b, c e
                 retorne as raízes da equação
