@@ -1,37 +1,21 @@
 {-
     Aula:       3
     Exercício:  4
-    Enunciado:  Implemente a distância de Minkowski com suas
-                variações Manhattan, Euclidiana e Chebyshev.
+    Enunciado:  Implemente fibonacci em paralelo
 -}
 
 -- | Main module
 module Main where
 
-    -- | types
-    type Vector a = [a]
+    import Control.Parallel
 
-    -- | operations
-    (.-.) = zipWith (-)
-    (.**) xs x = map (** x) xs
-
-    -- | minkowski function
-    minkowski :: Double -> Vector Double -> Vector Double -> Double
-    minkowski p x y = somatoria ** (1.0 / p)
+    fib :: Integer -> Integer
+    fib 0 = 0
+    fib 1 = 1
+    fib n = n1 `par` n2 `pseq` (n1 + n2)
         where
-            somatoria = sum normP
-            normP = absVal .** p
-            absVal = map abs (x .-. y)
+            n1 = fib (n - 1)
+            n2 = fib (n - 2)
 
-    -- | minkowski variations
-    manhattan = minkowski 1
-    euclidiana = minkowski 2
-    chebyshev x y = maximum
-                    $ map abs
-                    $ x .-. y
-    
-    -- | Main function
     main = do
-        print $ manhattan [1,1] [4,3]
-        print $ euclidiana [1,1] [4,3]
-        print $ chebyshev [1,1] [4,3]
+        print $ fib 40
