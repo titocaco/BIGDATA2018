@@ -1,7 +1,7 @@
 {-
     Aula:       3
     Exercício:  4
-    Enunciado:  Implemente a Similaridade dos Cossenos,
+    Enunciado:  Implemente a Similaridade dos Cossenos
                 e a Distância de Jaccard.
 -}
 
@@ -18,10 +18,10 @@ module Main where
 
     -- | cosine function
     cosine :: Vector Double -> Vector Double -> Double
-    cosine x y = (dotprod x y) / (norm' x * norm' y)
+    cosine x y = (dotprod x y) / (norm' x * norm' y)  
         where
             dotprod u v = sum (u .*. v)
-            norm' u = dotprod u u
+            norm' u = sqrt $ dotprod u u
 
     -- | jaccard function
     jaccard :: Vector Double -> Vector Double -> Double
@@ -32,5 +32,5 @@ module Main where
     
     -- | Main function
     main = do
-        print $ cosine [0,1] [1,2]
-        print $ jaccard [0,1] [1,2]
+        print $ cosine [5,0,3,0,2,0,0,2,0,0] [3,0,2,0,1,1,0,1,0,1]
+        -- print $ jaccard [0,1] [1,2]
