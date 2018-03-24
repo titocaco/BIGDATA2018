@@ -16,21 +16,23 @@ module Main where
     (.*.) = zipWith (*)
     (.**) xs x = map (** x) xs
 
-    -- | cosine function
-    cosine :: Vector Double -> Vector Double -> Double
-    cosine x y = (dotprod x y) / (norm' x * norm' y)  
-        where
-            dotprod u v = sum (u .*. v)
-            norm' u = sqrt $ dotprod u u
+    -- | dotprod function
+    dotprod :: Vector Double -> Vector Double -> Double
+    dotprod u v = sum (u .*. v)
 
-    -- | jaccard function
+    -- | norm' function
+    norm' :: Vector Double -> Double
+    norm' u = dotprod u u
+
+    -- | cosine similarity
+    cosine :: Vector Double -> Vector Double -> Double
+    cosine x y = dotprod x y / (sqrt $ (norm' x * norm' y))
+
+    -- | jaccard distance
     jaccard :: Vector Double -> Vector Double -> Double
-    jaccard x y = 1 - (sum prod / sum soma)
-        where
-            prod = x .*. y
-            soma = map (min 1) (x .+. y)
+    jaccard x y = 1 - (dotprod x y) / (norm' x + norm' y - dotprod x y)
     
     -- | Main function
     main = do
-        print $ cosine [5,0,3,0,2,0,0,2,0,0] [3,0,2,0,1,1,0,1,0,1]
-        -- print $ jaccard [0,1] [1,2]
+        print $ cosine [2,3,5] [0,0,2]
+        print $ jaccard [2,3,5] [0,0,2]
