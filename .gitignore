@@ -3,3 +3,4 @@
 *.eventlog
 *.exe
 *.ipynb_checkpoints
+*vscode
